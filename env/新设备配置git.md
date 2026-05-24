@@ -6,8 +6,8 @@
 
     ```powershell
     winget install --id Git.Git -e --source winget
-    git config --global user.name "abai"
-    git config --global user.email "shuchangshang@gmail.com"
+    git config --global user.name "自己的github用户名"
+    git config --global user.email "自己的github邮箱"
     git config --global core.autocrlf true  
     ```
 
