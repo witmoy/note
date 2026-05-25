@@ -12,7 +12,7 @@
 
 windows
 
-```powershell
+```bash
 npm install -g @anthropic/claude-code
 ```
 
@@ -76,7 +76,7 @@ notepad ~/.claude.json
 
 ### 2. 五层记忆架构
 
-1. 企业策略(C:\Program Files\ClaudeCode\CLAUDE.md)
+1. 企业策略(`C:\Program Files\ClaudeCode\CLAUDE.md`)
     主要记录公司编码标准、安全策略、合规要求等全局性规则
     ex：
 
@@ -97,7 +97,7 @@ notepad ~/.claude.json
     - 禁止直接访问生产数据库
     ```
 
-2. 用户级(~\.claude\CLAUDE.md)
+2. 用户级(`~\.claude\CLAUDE.md`)
     主要记录个人偏好、工作习惯、常用工具快捷方式等个性化信息
     用户级配置会被项目级配置中相同的要求覆盖
 
@@ -123,11 +123,11 @@ notepad ~/.claude.json
     - 终端: zsh
     ```
 
-3. 项目级(.\.claude\CLAUDE.md)
+3. 项目级(`.\.claude\CLAUDE.md`)
     项目架构、编码标准、常用工作流、技术栈
-4. 项目规划(.claude/rules/*.md)
+4. 项目规划(`.claude\rules\*.md`)
     语言特定指南、测试规范、api标注 **超大量规范的初步分类方法**
-5. 本地级(./CLAUDE.local.md)
+5. 本地级(`.\CLAUDE.local.md`)
     个人特定偏好，比如开发环境配置、调试技巧、工作备注、敏感信息(测试账号之类)
 
 ### 3. 自动记忆机制 Auto Memory
@@ -215,7 +215,7 @@ hooks:
 | 字段 | 必填 | 说明 | 示例 |
 | :-- | :-- | :-- | :-- |
 | name | 是 | 子代理名称，必须唯一 | code-reviewer |
-| description | 是 | **最重要的字段**子代理的简要描述 | Review code for security issues and best practices. Use after code changes. |
+| description | 是 | **最重要的字段**.子代理的简要描述 | Review code for security issues and best practices. Use after code changes. |
 | tools | 是 | 子代理可使用的工具列表，逗号分隔。省略则继承主对话的全部工具 | Read, Grep, Glob |
 | disallowedTools | 否 | 子代理禁止使用的工具列表，逗号分隔。优先级高于 tools 字段 | Write, Edit |
 | model | 否 | 子代理使用的模型，默认为主对话模型 | sonnet、glm-5 |
@@ -401,7 +401,7 @@ claude --agent CLI '{"name":"temp-agent","description":"临时子代理示例","
 #### 4.4 Muti Agent 架构选择决策
 
 ```text
-你的任务需要多 Agent 吗？
+一个任务需要多 Agent 吗？
 ├─ 单一领域、工具 < 5 个、上下文 < 50K tokens
 │  └─→ 不需要。用单 Agent + 好的 prompt 即可
 │
