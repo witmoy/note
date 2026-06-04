@@ -237,7 +237,7 @@ hooks:
     └── Glob                    ├── Glob                   ├── Edit
                                 ├── WebFetch               ├── Bash
                                 └── WebSearch              ├── Glob
-                                                        └── Grep
+                                                           └── Grep
     ```
 
 4. permissionMode 该字段可以覆盖主对话的权限模式，控制子代理在面对需要权限的操作时的行为：
