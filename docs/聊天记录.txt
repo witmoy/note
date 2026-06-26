@@ -1,0 +1,92 @@
+RAG、Openclaw
+
+agent=LLM+tool(function calling)+memory+xxxx
+
+# pip install -qU langchain "langchain[openai]"
+from langchain.agents import create_agent
+
+def get_weather(city: str) -> str:
+    """Get weather for a given city."""
+    return f"It's always sunny in {city}!"
+
+agent = create_agent(
+    model="openai:gpt-5.5",
+    tools=[get_weather],
+    system_prompt="You are a helpful assistant",
+)
+
+result = agent.invoke(
+    {"messages": [{"role": "user", "content": "What's the weather in San Francisco?"}]}
+)
+print(result["messages"][-1].content_blocks)
+
+https://docs.langchain.com/oss/python/langchain/overview
+
+from langchain.agents import create_agent
+from langgraph.checkpoint.memory import InMemorySaver  
+
+
+def get_user_info() -> str:
+    """Look up information about the current user."""
+    return "No user profile on file."
+
+
+agent = create_agent(
+    model="openai:gpt-5.4",
+    tools=[get_user_info],
+    checkpointer=InMemorySaver(),
+)
+
+thread_config = {"configurable": {"thread_id": "1"}}
+response = agent.invoke(
+    {"messages": [{"role": "user", "content": "Hi! My name is Bob."}]},
+    thread_config,
+)["messages"][-1].content
+
+print(response)  # "Hi Bob! Nice to see you here. How are you doing?"
+
+response = agent.invoke(
+    {"messages": [{"role": "user", "content": "What's my name?"}]},
+    thread_config,
+)["messages"][-1].content
+
+print(response)  # "You are Bob!"
+
+DAG
+LECL
+LCEL表达式语言
+# 典型的LCEL链式写法
+chain = prompt | model | output_parser
+
+# Chain本身也是Runnable，可以继续调用
+result = chain.invoke({"topic": "编程"})# 1 prompt.invoke  2. model.invoke 3. output_parser.invoke
+@tool("calculator", description="Performs arithmetic calculations. Use this for any math problems.")
+def calc(expression: str) -> str:
+    """Evaluate mathematical expressions."""
+    return str(eval(expression))
+agent = create_agent(
+    model="openai:gpt-5.4",
+    tools=[get_user_info],
+    checkpointer=InMemorySaver(),
+)
+
+text2sql
+
+bash is all you need
+harness
+
+https://github.com/shareAI-lab/learn-claude-code
+我用夸克网盘给你分享了「掌柜问数」，点击链接或复制整段内容，打开「夸克APP」即可获取。
+/~0e193ZFSfZ~:/
+链接：https://pan.quark.cn/s/fbbb5774136d
+
+RAG+langgraph
+
+https://hiclaw.io/
+
+clawhub,网管层
+agent=LLM+harness
+
+langsmith
+
+TF/IDF
